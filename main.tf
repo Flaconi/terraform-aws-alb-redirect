@@ -181,7 +181,7 @@ resource "aws_lb_listener_rule" "this" {
     "${rule.listener_type}://${rule.rule.host_match}${rule.rule.path_match}" => merge(
       rule.rule,
       { "listener_type" = rule.listener_type }
-  ) if ! (rule.rule.redirect_protocol == "HTTP" && rule.listener_type == "HTTPS") }
+  ) if lookup(rule.rule, "disabled_for", "") != rule.listener_type }
 
   listener_arn = each.value.listener_type == "HTTP" ? aws_lb_listener.http.arn : join("", aws_lb_listener.https.*.arn)
 
