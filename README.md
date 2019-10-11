@@ -78,13 +78,14 @@ module "alb_redirect" {
       # Match host `somehost3.tld`, match all paths, forward to http://http-redir-cannot-be-created-on-https-listener.example.com
       # path will be preserved
       # query params will be preserved
-      # this will only work on http listener as redirects from HTTPS to HTTP are not supported
+      # this will only work on http listener as redirects from HTTPS to HTTP are not supported, hence we disable it for HTTPS
       path_match        = "*"
       host_match        = "somehost3.tld"
       redirect_host     = "http-redir-cannot-be-created-on-https-listener.example.com"
       redirect_protocol = "HTTP"
       redirect_path     = "/"
       redirect_port     = "80"
+      disabled_for      = "HTTPS"
     },
     {
       path_match        = "/danger-forward-all-uris-of-all-hosts'"
