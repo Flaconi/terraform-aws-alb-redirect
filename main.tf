@@ -39,7 +39,7 @@ resource "aws_subnet" "public" {
 
   # If AWS adds another availability zone, this will not have effect on the already picked subnets.
   lifecycle {
-    ignore_changes = ["availability_zone"]
+    ignore_changes = [availability_zone]
   }
 
   tags = merge(
@@ -56,8 +56,8 @@ resource "aws_subnet" "public" {
 
 resource "aws_route_table_association" "this" {
   count          = 2
-  subnet_id      = "${aws_subnet.public[count.index].id}"
-  route_table_id = "${aws_route_table.public.id}"
+  subnet_id      = aws_subnet.public[count.index].id
+  route_table_id = aws_route_table.public.id
 }
 
 resource "aws_route" "public_internet_gateway" {
@@ -84,7 +84,7 @@ resource "aws_internet_gateway" "this" {
 resource "aws_security_group" "this" {
   name        = "${var.name}-albredirect"
   description = "Allow inbound 80/443 traffic alb redirect"
-  vpc_id      = "${aws_vpc.this.id}"
+  vpc_id      = aws_vpc.this.id
 
   ingress {
     # TLS (change to whatever ports you need)
