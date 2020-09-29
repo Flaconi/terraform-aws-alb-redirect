@@ -201,16 +201,18 @@ resource "aws_lb_listener_rule" "this" {
   dynamic condition {
     for_each = lookup(each.value, "path_match", "*") != "*" ? [1] : []
     content {
-      field  = "path-pattern"
-      values = [lookup(each.value, "path_match", "*")]
+      path_pattern {
+        values = [lookup(each.value, "path_match", "*")]
+      }
     }
   }
 
   dynamic condition {
     for_each = lookup(each.value, "host_match", "*") != "*" ? [1] : []
     content {
-      field  = "host-header"
-      values = [lookup(each.value, "host_match", "*")]
+      host_header {
+        values = [lookup(each.value, "host_match", "*")]
+      }
     }
   }
 }
