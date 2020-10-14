@@ -50,6 +50,12 @@ variable "lb_ip_address_type" {
   description = "The `ip_address_type` of the LB, either 'ipv4' or 'dualstack' in case ipv6 needs to be supported as well"
 }
 
+variable "ipv6_networking_enabled" {
+  type        = bool
+  default     = false
+  description = "Do we configure IPv6 routing and ingress in the VPC"
+}
+
 variable "response_message_body" {
   type        = string
   default     = "No match"

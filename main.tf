@@ -70,6 +70,18 @@ resource "aws_route" "public_internet_gateway" {
   }
 }
 
+resource "aws_route" "ipv6_internet_gateway" {
+  count = var.ipv6_networking_enabled ? 1 : 0
+
+  route_table_id              = aws_route_table.public.id
+  destination_ipv6_cidr_block = "::/0"
+  gateway_id                  = aws_internet_gateway.this.id
+
+  timeouts {
+    create = "5m"
+  }
+}
+
 resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
 
@@ -88,16 +100,18 @@ resource "aws_security_group" "this" {
 
   ingress {
     # TLS (change to whatever ports you need)
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = var.ipv6_networking_enabled ? ["::/0"] : []
   }
   ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = var.ipv6_networking_enabled ? ["::/0"] : []
   }
 }
 
