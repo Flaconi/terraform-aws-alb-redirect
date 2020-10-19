@@ -153,7 +153,7 @@ The following resources _CAN_ be created:
 | name | The name used to interpolate into the resources created | string | n/a | yes |
 | certificate\_arn | The arn of the certificate | string | `""` | no |
 | cidr | The cidr used for the network | string | `"172.30.0.0/16"` | no |
-| extra\_ssl\_certs | The extra ssl certifice arns applied to the SSL Listener | set(string) | `[]` | no |
+| extra\_ssl\_certs | The extra ssl certifice arns applied to the SSL Listener | list(string) | `[]` | no |
 | extra\_ssl\_certs\_count | The count of the extra_ssl_certs | number | `"0"` | no |
 | https\_enabled | Do we enable https | bool | `"false"` | no |
 | lb\_ip\_address\_type | The `ip_address_type` of the LB, either 'ipv4' or 'dualstack' in case ipv6 needs to be supported as well | string | `"ipv4"` | no |

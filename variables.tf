@@ -27,7 +27,7 @@ variable "certificate_arn" {
 }
 
 variable "extra_ssl_certs" {
-  type        = set(string)
+  type        = list(string)
   default     = []
   description = "The extra ssl certifice arns applied to the SSL Listener"
 }
