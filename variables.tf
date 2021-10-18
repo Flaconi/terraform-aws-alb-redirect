@@ -61,3 +61,9 @@ variable "response_code" {
   default     = "500"
   description = "The default status code to return when no rules have been met"
 }
+
+variable "ssl_policy" {
+  description = "Security policy used for front-end connections."
+  type        = string
+  default     = "ELBSecurityPolicy-FS-1-2-Res-2020-10"
+}

@@ -144,7 +144,7 @@ resource "aws_lb_listener" "https" {
   port              = 443
   protocol          = "HTTPS"
   certificate_arn   = var.certificate_arn
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  ssl_policy        = var.ssl_policy
 
   default_action {
     type = "fixed-response"
@@ -198,7 +198,7 @@ resource "aws_lb_listener_rule" "this" {
     }
   }
 
-  dynamic condition {
+  dynamic "condition" {
     for_each = lookup(each.value, "path_match", "*") != "*" ? [1] : []
     content {
       path_pattern {
@@ -207,7 +207,7 @@ resource "aws_lb_listener_rule" "this" {
     }
   }
 
-  dynamic condition {
+  dynamic "condition" {
     for_each = lookup(each.value, "host_match", "*") != "*" ? [1] : []
     content {
       host_header {
