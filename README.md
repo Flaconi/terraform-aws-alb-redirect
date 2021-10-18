@@ -160,6 +160,7 @@ The following resources _CAN_ be created:
 | redirect\_rules | A list with maps populated with redirect rules | list(map(string)) | `[]` | no |
 | response\_code | The default status code to return when no rules have been met | string | `"500"` | no |
 | response\_message\_body | The default response message body in case no rules have been met | string | `"No match"` | no |
+| ssl\_policy | Security policy used for front-end connections. | string | `"ELBSecurityPolicy-FS-1-2-Res-2020-10"` | no |
 | tags | Extra tags to be applied to the resources | map(string) | `{}` | no |
 
 ## Outputs

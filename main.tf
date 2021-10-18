@@ -144,7 +144,7 @@ resource "aws_lb_listener" "https" {
   port              = 443
   protocol          = "HTTPS"
   certificate_arn   = var.certificate_arn
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  ssl_policy        = var.ssl_policy
 
   default_action {
     type = "fixed-response"
