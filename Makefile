@@ -12,7 +12,7 @@ TF_MODULES  = $(sort $(dir $(wildcard $(CURRENT_DIR)modules/*/)))
 # Container versions
 # -------------------------------------------------------------------------------------------------
 TF_VERSION      = 0.14.11
-TFDOCS_VERSION  = 0.10.1
+TFDOCS_VERSION  = 0.15.0-0.29
 FL_VERSION      = 0.4
 JL_VERSION      = 1.6.0-0.5
 
@@ -124,7 +124,7 @@ _gen-main:
 		-e DELIM_START='<!-- TFDOCS_HEADER_START -->' \
 		-e DELIM_CLOSE='<!-- TFDOCS_HEADER_END -->' \
 		cytopia/terraform-docs:$(TFDOCS_VERSION) \
-		terraform-docs-replace --show-all=false --show header md tbl --indent 2 --sort README.md; then \
+		terraform-docs-replace --show header markdown tbl --indent 2 --sort README.md; then \
 		echo "OK"; \
 	else \
 		echo "Failed"; \
@@ -135,7 +135,7 @@ _gen-main:
 		-e DELIM_START='<!-- TFDOCS_PROVIDER_START -->' \
 		-e DELIM_CLOSE='<!-- TFDOCS_PROVIDER_END -->' \
 		cytopia/terraform-docs:$(TFDOCS_VERSION) \
-		terraform-docs-replace --show-all=false --show providers md tbl --indent 2 --sort README.md; then \
+		terraform-docs-replace --show providers markdown tbl --indent 2 --sort README.md; then \
 		echo "OK"; \
 	else \
 		echo "Failed"; \
@@ -146,7 +146,7 @@ _gen-main:
 		-e DELIM_START='<!-- TFDOCS_REQUIREMENTS_START -->' \
 		-e DELIM_CLOSE='<!-- TFDOCS_REQUIREMENTS_END -->' \
 		cytopia/terraform-docs:$(TFDOCS_VERSION) \
-		terraform-docs-replace --show-all=false --show requirements md tbl --indent 2 --sort README.md; then \
+		terraform-docs-replace --show requirements markdown tbl --indent 2 --sort README.md; then \
 		echo "OK"; \
 	else \
 		echo "Failed"; \
@@ -157,7 +157,7 @@ _gen-main:
 		-e DELIM_START='<!-- TFDOCS_INPUTS_START -->' \
 		-e DELIM_CLOSE='<!-- TFDOCS_INPUTS_END -->' \
 		cytopia/terraform-docs:$(TFDOCS_VERSION) \
-		terraform-docs-replace --show-all=false --show inputs md doc --indent 2 $(TFDOCS_ARGS) README.md; then \
+		terraform-docs-replace --show inputs markdown doc --indent 2 $(TFDOCS_ARGS) README.md; then \
 		echo "OK"; \
 	else \
 		echo "Failed"; \
@@ -168,7 +168,7 @@ _gen-main:
 		-e DELIM_START='<!-- TFDOCS_OUTPUTS_START -->' \
 		-e DELIM_CLOSE='<!-- TFDOCS_OUTPUTS_END -->' \
 		cytopia/terraform-docs:$(TFDOCS_VERSION) \
-		terraform-docs-replace --show-all=false --show outputs md tbl --indent 2 --sort README.md; then \
+		terraform-docs-replace --show outputs markdown tbl --indent 2 --sort README.md; then \
 		echo "OK"; \
 	else \
 		echo "Failed"; \
@@ -187,7 +187,7 @@ _gen-examples:
 			-e DELIM_START='$(DELIM_START)' \
 			-e DELIM_CLOSE='$(DELIM_CLOSE)' \
 			cytopia/terraform-docs:$(TFDOCS_VERSION) \
-			terraform-docs-replace $(TFDOCS_ARGS) md $${DOCKER_PATH}/README.md; then \
+			terraform-docs-replace $(TFDOCS_ARGS) markdown $${DOCKER_PATH}/README.md; then \
 			echo "OK"; \
 		else \
 			echo "Failed"; \
@@ -207,7 +207,7 @@ _gen-modules:
 			-e DELIM_START='$(DELIM_START)' \
 			-e DELIM_CLOSE='$(DELIM_CLOSE)' \
 			cytopia/terraform-docs:$(TFDOCS_VERSION) \
-			terraform-docs-replace $(TFDOCS_ARGS) md $${DOCKER_PATH}/README.md; then \
+			terraform-docs-replace $(TFDOCS_ARGS) markdown $${DOCKER_PATH}/README.md; then \
 			echo "OK"; \
 		else \
 			echo "Failed"; \
