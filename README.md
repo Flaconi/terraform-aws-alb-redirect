@@ -1,6 +1,7 @@
 # Terraform AWS ALB Redirect
 
-[![Build Status](https://travis-ci.com/Flaconi/terraform-aws-alb-redirect.svg?branch=master)](https://travis-ci.com/Flaconi/erraform-aws-alb-redirect)
+[![lint](https://github.com/Flaconi/terraform-aws-alb-redirect/workflows/lint/badge.svg)](https://github.com/Flaconi/terraform-aws-alb-redirect/actions?query=workflow%3Alint)
+[![test](https://github.com/Flaconi/terraform-aws-alb-redirect/workflows/test/badge.svg)](https://github.com/Flaconi/terraform-aws-alb-redirect/actions?query=workflow%3Atest)
 [![Tag](https://img.shields.io/github/tag/Flaconi/terraform-aws-alb-redirect.svg)](https://github.com/Flaconi/terraform-aws-alb-redirect/releases)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -155,7 +156,7 @@ The following resources _CAN_ be created:
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 <!-- TFDOCS_PROVIDER_END -->
 
@@ -171,7 +172,7 @@ No requirements.
 
 The following input variables are required:
 
-### name
+### <a name="input_name"></a> [name](#input\_name)
 
 Description: The name used to interpolate into the resources created
 
@@ -181,7 +182,7 @@ Type: `string`
 
 The following input variables are optional (have default values):
 
-### cidr
+### <a name="input_cidr"></a> [cidr](#input\_cidr)
 
 Description: The cidr used for the network
 
@@ -189,7 +190,7 @@ Type: `string`
 
 Default: `"172.30.0.0/16"`
 
-### tags
+### <a name="input_tags"></a> [tags](#input\_tags)
 
 Description: Extra tags to be applied to the resources
 
@@ -197,7 +198,7 @@ Type: `map(string)`
 
 Default: `{}`
 
-### https\_enabled
+### <a name="input_https_enabled"></a> [https\_enabled](#input\_https\_enabled)
 
 Description: Do we enable https
 
@@ -205,7 +206,7 @@ Type: `bool`
 
 Default: `false`
 
-### certificate\_arn
+### <a name="input_certificate_arn"></a> [certificate\_arn](#input\_certificate\_arn)
 
 Description: The arn of the certificate
 
@@ -213,7 +214,7 @@ Type: `string`
 
 Default: `""`
 
-### extra\_ssl\_certs
+### <a name="input_extra_ssl_certs"></a> [extra\_ssl\_certs](#input\_extra\_ssl\_certs)
 
 Description: The extra ssl certifice arns applied to the SSL Listener
 
@@ -221,7 +222,7 @@ Type: `list(string)`
 
 Default: `[]`
 
-### extra\_ssl\_certs\_count
+### <a name="input_extra_ssl_certs_count"></a> [extra\_ssl\_certs\_count](#input\_extra\_ssl\_certs\_count)
 
 Description: The count of the extra\_ssl\_certs
 
@@ -229,7 +230,7 @@ Type: `number`
 
 Default: `0`
 
-### redirect\_rules
+### <a name="input_redirect_rules"></a> [redirect\_rules](#input\_redirect\_rules)
 
 Description: A list with maps populated with redirect rules
 
@@ -237,7 +238,7 @@ Type: `list(map(string))`
 
 Default: `[]`
 
-### lb\_ip\_address\_type
+### <a name="input_lb_ip_address_type"></a> [lb\_ip\_address\_type](#input\_lb\_ip\_address\_type)
 
 Description: The `ip_address_type` of the LB, either 'ipv4' or 'dualstack' in case ipv6 needs to be supported as well
 
@@ -245,7 +246,7 @@ Type: `string`
 
 Default: `"ipv4"`
 
-### response\_message\_body
+### <a name="input_response_message_body"></a> [response\_message\_body](#input\_response\_message\_body)
 
 Description: The default response message body in case no rules have been met
 
@@ -253,7 +254,7 @@ Type: `string`
 
 Default: `"No match"`
 
-### response\_code
+### <a name="input_response_code"></a> [response\_code](#input\_response\_code)
 
 Description: The default status code to return when no rules have been met
 
@@ -261,7 +262,7 @@ Type: `string`
 
 Default: `"500"`
 
-### ssl\_policy
+### <a name="input_ssl_policy"></a> [ssl\_policy](#input\_ssl\_policy)
 
 Description: Security policy used for front-end connections.
 
@@ -276,7 +277,7 @@ Default: `"ELBSecurityPolicy-FS-1-2-Res-2020-10"`
 
 | Name | Description |
 |------|-------------|
-| this\_lb\_dns\_name | Application Load Balancer fqdn |
+| <a name="output_this_lb_dns_name"></a> [this\_lb\_dns\_name](#output\_this\_lb\_dns\_name) | Application Load Balancer fqdn |
 
 <!-- TFDOCS_OUTPUTS_END -->
 
