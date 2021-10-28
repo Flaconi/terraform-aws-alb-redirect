@@ -246,6 +246,14 @@ Type: `string`
 
 Default: `"ipv4"`
 
+### <a name="input_ipv6_networking_enabled"></a> [ipv6\_networking\_enabled](#input\_ipv6\_networking\_enabled)
+
+Description: Do we configure IPv6 routing and ingress in the VPC
+
+Type: `bool`
+
+Default: `false`
+
 ### <a name="input_response_message_body"></a> [response\_message\_body](#input\_response\_message\_body)
 
 Description: The default response message body in case no rules have been met
