@@ -219,11 +219,11 @@ Default: `""`
 
 ### <a name="input_extra_ssl_certs"></a> [extra\_ssl\_certs](#input\_extra\_ssl\_certs)
 
-Description: The extra ssl certifice arns applied to the SSL Listener
+Description: Map of extra ssl certificates arns applied to the SSL Listener
 
-Type: `set(string)`
+Type: `map(string)`
 
-Default: `[]`
+Default: `{}`
 
 ### <a name="input_redirect_rules"></a> [redirect\_rules](#input\_redirect\_rules)
 

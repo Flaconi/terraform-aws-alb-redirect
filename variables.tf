@@ -27,9 +27,9 @@ variable "certificate_arn" {
 }
 
 variable "extra_ssl_certs" {
-  type        = set(string)
-  default     = []
-  description = "The extra ssl certifice arns applied to the SSL Listener"
+  type        = map(string)
+  default     = {}
+  description = "Map of extra ssl certificates arns applied to the SSL Listener"
 }
 
 variable "redirect_rules" {
