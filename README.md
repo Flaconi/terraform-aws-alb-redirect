@@ -33,14 +33,14 @@ module "alb_redirect" {
   # do we enable the https listener
   https_enabled = true
 
-  # certificate_arn sets the certificate arn for the https listener, not mandatory
+  # certificate_arn sets the certificate arn for the https listener (optional)
   certificate_arn = aws_acm_certificate.acme[0].arn
 
-  # extra_ssl_certs sets the extra ssl certificate arns applied to the SSL Listener, not mandagtory
-  extra_ssl_certs = [aws_acm_certificate.acme[1].arn, aws_acm_certificate.acme[2].arn]
-
-  # extra_ssl_certs_count, the count of the extra_ssl_certs
-  extra_ssl_certs_count = 2
+  # extra_ssl_certs sets the extra ssl certificate arns applied to the SSL Listener (optional)
+  extra_ssl_certs = {
+    cert1 = aws_acm_certificate.acme[1].arn
+    cert2 = aws_acm_certificate.acme[2].arn
+  }
 
   # lb_ip_address_type sets the `ip_address_type` of the LB, either 'ipv4' or 'dualstack' in case ipv6 needs to be supported as well
   # lb_ip_address_type = "ipv4"
@@ -50,7 +50,6 @@ module "alb_redirect" {
 
   # response_code sets the status code to return when no rules have been met"
   # response_code = 500
-
 
   redirect_rules = [
     {
