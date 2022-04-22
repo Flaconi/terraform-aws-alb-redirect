@@ -172,9 +172,10 @@ resource "aws_lb_listener" "https" {
 }
 
 resource "aws_lb_listener_certificate" "https" {
+  for_each = var.extra_ssl_certs
+
   listener_arn    = join("", aws_lb_listener.https.*.arn)
-  certificate_arn = var.extra_ssl_certs[count.index]
-  count           = var.extra_ssl_certs_count
+  certificate_arn = each.value
 }
 
 locals {

@@ -27,15 +27,9 @@ variable "certificate_arn" {
 }
 
 variable "extra_ssl_certs" {
-  type        = list(string)
+  type        = set(string)
   default     = []
   description = "The extra ssl certifice arns applied to the SSL Listener"
-}
-
-variable "extra_ssl_certs_count" {
-  type        = number
-  default     = 0
-  description = "The count of the extra_ssl_certs"
 }
 
 variable "redirect_rules" {
