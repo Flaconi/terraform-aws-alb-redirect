@@ -156,14 +156,17 @@ The following resources _CAN_ be created:
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3 |
 
 <!-- TFDOCS_PROVIDER_END -->
 
 <!-- TFDOCS_REQUIREMENTS_START -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3 |
 
 <!-- TFDOCS_REQUIREMENTS_END -->'
 
@@ -216,19 +219,11 @@ Default: `""`
 
 ### <a name="input_extra_ssl_certs"></a> [extra\_ssl\_certs](#input\_extra\_ssl\_certs)
 
-Description: The extra ssl certifice arns applied to the SSL Listener
+Description: Map of extra ssl certificates arns applied to the SSL Listener
 
-Type: `list(string)`
+Type: `map(string)`
 
-Default: `[]`
-
-### <a name="input_extra_ssl_certs_count"></a> [extra\_ssl\_certs\_count](#input\_extra\_ssl\_certs\_count)
-
-Description: The count of the extra\_ssl\_certs
-
-Type: `number`
-
-Default: `0`
+Default: `{}`
 
 ### <a name="input_redirect_rules"></a> [redirect\_rules](#input\_redirect\_rules)
 
