@@ -27,15 +27,15 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_subnet" "public" {
-  count = 2
+  for_each = { for idx, name in data.aws_availability_zones.available.names : name => idx }
 
   vpc_id                          = aws_vpc.this.id
-  cidr_block                      = cidrsubnet(var.cidr, 8, count.index)
-  ipv6_cidr_block                 = cidrsubnet(aws_vpc.this.ipv6_cidr_block, 8, count.index)
+  cidr_block                      = cidrsubnet(var.cidr, 8, each.value)
+  ipv6_cidr_block                 = cidrsubnet(aws_vpc.this.ipv6_cidr_block, 8, each.value)
   map_public_ip_on_launch         = false
   assign_ipv6_address_on_creation = true
 
-  availability_zone = data.aws_availability_zones.available.names[count.index]
+  availability_zone = each.key
 
   # If AWS adds another availability zone, this will not have effect on the already picked subnets.
   lifecycle {
@@ -47,7 +47,7 @@ resource "aws_subnet" "public" {
       "Name" = format(
         "%s-%s",
         var.name,
-        count.index,
+        each.key,
       )
     },
     var.tags,
@@ -55,8 +55,9 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_route_table_association" "this" {
-  count          = 2
-  subnet_id      = aws_subnet.public[count.index].id
+  for_each = toset(data.aws_availability_zones.available.names)
+
+  subnet_id      = aws_subnet.public[each.value].id
   route_table_id = aws_route_table.public.id
 }
 
@@ -122,7 +123,7 @@ resource "aws_lb" "this" {
   load_balancer_type               = "application"
   name                             = var.name
   security_groups                  = [aws_security_group.this.id]
-  subnets                          = aws_subnet.public.*.id
+  subnets                          = [for s in aws_subnet.public : s.id]
   enable_cross_zone_load_balancing = false
   enable_deletion_protection       = false
   enable_http2                     = true
