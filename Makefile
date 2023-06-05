@@ -11,7 +11,7 @@ TF_MODULES  = $(sort $(dir $(wildcard $(CURRENT_DIR)modules/*/)))
 # -------------------------------------------------------------------------------------------------
 # Container versions
 # -------------------------------------------------------------------------------------------------
-TF_VERSION      = 0.14.11
+TF_VERSION      = 1.0.11
 TFDOCS_VERSION  = 0.16.0-0.34
 FL_VERSION      = latest-0.8
 JL_VERSION      = 1.6.0-0.14
@@ -77,16 +77,14 @@ test: _pull-tf
 		echo "------------------------------------------------------------"; \
 		echo "# Terraform init"; \
 		echo "------------------------------------------------------------"; \
-		if docker run $$(tty -s && echo "-it" || echo) --rm -v "$(CURRENT_DIR):/t" --workdir "$${DOCKER_PATH}" hashicorp/terraform:$(TF_VERSION) \
+		if docker run $$(tty -s && echo "-it" || echo) --rm --network host -v "$(CURRENT_DIR):/t" --workdir "$${DOCKER_PATH}" hashicorp/terraform:$(TF_VERSION) \
 			init \
-				-verify-plugins=true \
 				-lock=false \
-				-upgrade=true \
+				-upgrade \
 				-reconfigure \
 				-input=false \
-				-get-plugins=true \
-				-get=true \
-				.; then \
+				-get=true; \
+		then \
 			echo "OK"; \
 		else \
 			echo "Failed"; \
