@@ -38,6 +38,7 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_redirect_this_lb_dns_name"></a> [redirect\_this\_lb\_dns\_name](#output\_redirect\_this\_lb\_dns\_name) | Application Load Balancer fqdn |
+| <a name="output_redirect_dns_name"></a> [redirect\_dns\_name](#output\_redirect\_dns\_name) | Application Load Balancer fqdn |
+| <a name="output_redirect_zone_id"></a> [redirect\_zone\_id](#output\_redirect\_zone\_id) | Application Load Balancer Route53 Zone ID |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

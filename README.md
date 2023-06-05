@@ -279,7 +279,8 @@ Default: `"ELBSecurityPolicy-FS-1-2-Res-2020-10"`
 
 | Name | Description |
 |------|-------------|
-| <a name="output_this_lb_dns_name"></a> [this\_lb\_dns\_name](#output\_this\_lb\_dns\_name) | Application Load Balancer fqdn |
+| <a name="output_dns_name"></a> [dns\_name](#output\_dns\_name) | Application Load Balancer fqdn |
+| <a name="output_zone_id"></a> [zone\_id](#output\_zone\_id) | Application Load Balancer Route53 Zone ID |
 
 <!-- TFDOCS_OUTPUTS_END -->
 
