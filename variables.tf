@@ -62,6 +62,25 @@ variable "response_code" {
   description = "The default status code to return when no rules have been met"
 }
 
+variable "redirect_port" {
+  description = "The port to redirect to."
+  type        = string
+  default     = "443"
+}
+
+variable "redirect_protocol" {
+  description = "The protocol to redirect to."
+  type        = string
+  default     = "HTTPS"
+
+}
+
+variable "redirect_status_code" {
+  description = "The HTTP redirect code to use."
+  type        = string
+  default     = "HTTP_301"
+
+}
 variable "ssl_policy" {
   description = "Security policy used for front-end connections."
   type        = string
