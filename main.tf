@@ -142,12 +142,12 @@ resource "aws_lb_listener" "http" {
   protocol          = "HTTP"
 
   default_action {
-    type = "fixed-response"
+    type = "redirect"
 
-    fixed_response {
-      content_type = "text/plain"
-      message_body = var.response_message_body
-      status_code  = var.response_code
+    redirect {
+      port        = var.redirect_port
+      protocol    = var.redirect_protocol
+      status_code = var.redirect_status_code
     }
   }
 }

@@ -264,6 +264,30 @@ Type: `string`
 
 Default: `"500"`
 
+### <a name="input_redirect_port"></a> [redirect\_port](#input\_redirect\_port)
+
+Description: The port to redirect to.
+
+Type: `string`
+
+Default: `"443"`
+
+### <a name="input_redirect_protocol"></a> [redirect\_protocol](#input\_redirect\_protocol)
+
+Description: The protocol to redirect to.
+
+Type: `string`
+
+Default: `"HTTPS"`
+
+### <a name="input_redirect_status_code"></a> [redirect\_status\_code](#input\_redirect\_status\_code)
+
+Description: The HTTP redirect code to use.
+
+Type: `string`
+
+Default: `"HTTP_301"`
+
 ### <a name="input_ssl_policy"></a> [ssl\_policy](#input\_ssl\_policy)
 
 Description: Security policy used for front-end connections.
