@@ -27,7 +27,7 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_subnet" "public" {
-  for_each = { for idx, name in data.aws_availability_zones.available.names : name => idx }
+  for_each = { for idx, name in data.aws_availability_zones.this.names : name => idx }
 
   vpc_id                          = aws_vpc.this.id
   cidr_block                      = cidrsubnet(var.cidr, 8, each.value)
@@ -55,7 +55,7 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_route_table_association" "this" {
-  for_each = toset(data.aws_availability_zones.available.names)
+  for_each = toset(data.aws_availability_zones.this.names)
 
   subnet_id      = aws_subnet.public[each.value].id
   route_table_id = aws_route_table.public.id
