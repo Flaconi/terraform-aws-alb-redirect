@@ -10,7 +10,7 @@ resource "tls_private_key" "this" {
   algorithm = "RSA"
 }
 
-resource "tls_self_signed_cert" "acme" {
+resource "tls_self_signed_cert" "this" {
   count           = 3
   private_key_pem = tls_private_key.this.private_key_pem
 
@@ -31,7 +31,7 @@ resource "tls_self_signed_cert" "acme" {
 resource "aws_acm_certificate" "acme" {
   count            = 3
   private_key      = tls_private_key.this.private_key_pem
-  certificate_body = tls_self_signed_cert.acme[count.index].cert_pem
+  certificate_body = tls_self_signed_cert.this[count.index].cert_pem
 }
 
 module "redirect" {
