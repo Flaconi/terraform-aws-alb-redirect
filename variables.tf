@@ -52,13 +52,13 @@ variable "ipv6_networking_enabled" {
 
 variable "response_message_body" {
   type        = string
-  default     = "No match"
+  default     = "Not found"
   description = "The default response message body in case no rules have been met"
 }
 
 variable "response_code" {
   type        = string
-  default     = "500"
+  default     = "404"
   description = "The default status code to return when no rules have been met"
 }
 

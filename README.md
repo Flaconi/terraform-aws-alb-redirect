@@ -254,7 +254,7 @@ Description: The default response message body in case no rules have been met
 
 Type: `string`
 
-Default: `"No match"`
+Default: `"Not found"`
 
 ### <a name="input_response_code"></a> [response\_code](#input\_response\_code)
 
@@ -262,7 +262,7 @@ Description: The default status code to return when no rules have been met
 
 Type: `string`
 
-Default: `"500"`
+Default: `"404"`
 
 ### <a name="input_redirect_port"></a> [redirect\_port](#input\_redirect\_port)
 
@@ -313,4 +313,4 @@ Default: `"ELBSecurityPolicy-FS-1-2-Res-2020-10"`
 
 [MIT](LICENSE)
 
-Copyright (c) 2019 [Flaconi GmbH](https://github.com/Flaconi)
+Copyright (c) 2019-2025 [Flaconi GmbH](https://github.com/Flaconi)
